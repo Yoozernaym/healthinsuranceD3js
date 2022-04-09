@@ -1,0 +1,182 @@
+body {
+  margin: 0;
+}
+h1 {
+  text-align: center;
+}
+h2 {
+  text-align: center;
+}
+p {
+  text-align: center;
+}
+.tab {
+  padding: 0;
+}
+.tab button {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0;
+}
+.selectbox {
+  display: flex;
+}
+.selectbox input{
+  overflow:visible;
+}
+#graph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sortbuttons {
+  display: inline-flex;
+}
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid white;
+}
+.arrow-up:active {
+  border-bottom: 10px solid lightblue;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+}
+.arrow-down:active {
+  border-bottom: 10px solid lightblue;
+}
+
+#divider {
+  height: 0;
+}
+
+.tablefilter {
+  display: flex;
+}
+.tablefilter label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.d3logo {
+  width: 3rem;
+}
+.censuslogo {
+  background-color: #112e51;
+  display: flex;
+  width: 5rem;
+  padding: .2rem;
+  border-radius: 5px;
+}
+
+#loadcontainer {
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: .7;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.lds-default {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-default div {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: blue;
+    border-radius: 50%;
+    animation: lds-default 1.2s linear infinite;
+  }
+  .lds-default div:nth-child(1) {
+    animation-delay: 0s;
+    top: 37px;
+    left: 66px;
+  }
+  .lds-default div:nth-child(2) {
+    animation-delay: -0.1s;
+    top: 22px;
+    left: 62px;
+  }
+  .lds-default div:nth-child(3) {
+    animation-delay: -0.2s;
+    top: 11px;
+    left: 52px;
+  }
+  .lds-default div:nth-child(4) {
+    animation-delay: -0.3s;
+    top: 7px;
+    left: 37px;
+  }
+  .lds-default div:nth-child(5) {
+    animation-delay: -0.4s;
+    top: 11px;
+    left: 22px;
+  }
+  .lds-default div:nth-child(6) {
+    animation-delay: -0.5s;
+    top: 22px;
+    left: 11px;
+  }
+  .lds-default div:nth-child(7) {
+    animation-delay: -0.6s;
+    top: 37px;
+    left: 7px;
+  }
+  .lds-default div:nth-child(8) {
+    animation-delay: -0.7s;
+    top: 52px;
+    left: 11px;
+  }
+  .lds-default div:nth-child(9) {
+    animation-delay: -0.8s;
+    top: 62px;
+    left: 22px;
+  }
+  .lds-default div:nth-child(10) {
+    animation-delay: -0.9s;
+    top: 66px;
+    left: 37px;
+  }
+  .lds-default div:nth-child(11) {
+    animation-delay: -1s;
+    top: 62px;
+    left: 52px;
+  }
+  .lds-default div:nth-child(12) {
+    animation-delay: -1.1s;
+    top: 52px;
+    left: 62px;
+  }
+  @keyframes lds-default {
+    0%, 20%, 80%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+  }
+  

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Plotly JS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/x-icon" href="">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="app.css">
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+    </head>
+    <body class="w3-padding w3-light-blue">
+        <div id="loadcontainer">
+            <div id="loading" class="lds-default">
+                <div></div><div></div><div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+        </div>
+        
+        <h1 class="w3-padding">Small Area Health Insurance Estimates (SAHIE) from U.S. Census Bureau</h1>
+        <div class="selectbox">
+            <select id="year" class="w3-input w3-white w3-hover-light-grey w3-border-blue w3-round w3-margin"></select>
+            <select id="state" class="w3-input w3-white w3-hover-light-grey w3-border-blue w3-round w3-margin"></select>
+            <input id="submit" class="w3-white w3-btn w3-card w3-round w3-margin" type="submit" value="Submit">
+        </div>
+        <main class="w3-card w3-white w3-padding">
+            <div class="w3-cell-row w3-blue">
+                <div class="w3-container w3-cell tab">
+                    <button id="county" class="w3-btn">County</button>
+                </div>
+                <div class="w3-container w3-cell tab">
+                    <button id="demo" class="w3-btn">Race and IPR</button>
+                </div>
+                <div class="w3-container w3-cell tab">
+                    <button id="time" class="w3-btn">Over Time</button>
+                </div>
+            </div>
+            <h2>Select Year and State to see percentage of people without health insurance.</h2>
+            <h2>Select tab to visualize data by County, Race and IPR, or Over time.</h2>
+            <p>Data is retrieved from Small Area Health Insurance Estimates (SAHIE) U.S. Census Bureau API.</p>
+            <div id="graph"></div>
+            <div id="divider" class="w3-border-bottom w3-margin"></div>
+            <h2>State Data Table</h2>
+            <div class="tablefilter w3-padding">
+                <label>Race:</label><select id="racefilter" class="w3-input w3-white w3-hover-light-grey w3-border-blue w3-round w3-margin"></select>
+                <label>Sex:</label><select id="sexfilter" class="w3-input w3-white w3-hover-light-grey w3-border-blue w3-round w3-margin"></select>
+                <label>IPR:</label><select id="iprfilter" class="w3-input w3-white w3-hover-light-grey w3-border-blue w3-round w3-margin"></select>
+            </div>
+            <table class="w3-table-all w3-centered">
+                <thead>
+                    <tr id="thr" class="w3-blue">
+                        <th>Race</th>
+                        <th>Sex</th>
+                        <th>IPR</th>
+                        <th><div class="sortbuttons w3-margin-right"><div class="arrow-up"></div><div class="arrow-down"></div></div>Percent Uninsured</th>
+                    </tr>
+                </thead>
+                <tbody id="tb">
+                    <tr>
+                        <td>No State Selected</td>
+                        <td>No State Selected</td>
+                        <td>No State Selected</td>
+                        <td>No State Selected</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </main>
+        <footer class="w3-padding">Made with 
+            <a class="w3-padding" href="http://d3js.org/">
+                <img class="d3logo" src="http://camo.githubusercontent.com/586ccf0aad9684edc821658cee04146cf36d1f1d5ec904bbefd72728909ccb2e/68747470733a2f2f64336a732e6f72672f6c6f676f2e737667" alt="D3js">
+            </a> 
+            js, using data from
+            <a class="w3-padding" href="http://www.census.gov/data/developers/data-sets/Health-Insurance-Statistics.html">
+                <img class="censuslogo" src="http://www.census.gov/content/dam/Census/public/brand/census-logo.svg" alt="Census.gov">
+            </a>
+        </footer>        
+        
+        <script src="app.js"></script>
+    </body>
+</html>
