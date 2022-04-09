@@ -25,6 +25,9 @@ p {
 .selectbox input{
   overflow:visible;
 }
+option {
+  z-index: 2;
+}
 #graph {
   display: flex;
   align-items: center;

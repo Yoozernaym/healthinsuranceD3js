@@ -1,5 +1,6 @@
 
 var statedata;
+var statedatafiltered;
 var countydata;
 var timedata;
 const racecodes = {'0': 'All Races', '1': 'White', '2': 'Black', '3': 'Hispanic'};
@@ -83,9 +84,7 @@ d3.select('#submit')
             data.forEach(row => {
                 trimmed.push(row.slice(0,2));
             });
-            
             countydata = trimmed.slice(1);
-            //updatecountygraph(countydata);
         });
     fetch(`https://api.census.gov/data/timeseries/healthins/sahie?get=PCTUI_PT,YEAR&for=state:${states.value}`)
         .then(res => res.json())
@@ -431,7 +430,7 @@ d3.select('.arrow-down')
 
 
 //Table filtering
-const filtertable = (event, o, cat) => {
+const filtertable = (o, cat) => {
     datafiltered = [];
     tableselection[cat] = o;
     statedata.forEach(row => {
@@ -441,36 +440,40 @@ const filtertable = (event, o, cat) => {
             datafiltered.push(row);
         }
     })
+    statedatafiltered = datafiltered;
     displaytabledata(datafiltered);
 }
 //filter race
 d3.select('#racefilter')
+    .on('change', (e) => {
+        filtertable(e.target.value, 'race');
+    })
     .selectAll('option')
     .data(['Any'].concat(Object.values(racecodes)))
     .join('option')
         .attr('value',d => d)
         .text(d => d)
-    .on('click', (e,o) => {
-        filtertable(e,o,'race');
-    });
+    
 //filter sex
 d3.select('#sexfilter')
+    .on('change', (e) => {
+        filtertable(e.target.value, 'sex');
+    })
     .selectAll('option')
     .data(['Any'].concat(Object.values(sexcodes)))
     .join('option')
         .attr('value',d => d)
         .text(d => d)
-    .on('click', (e,o) => {
-        filtertable(e,o,'sex');
-    });
+
 //filter ipr
 d3.select('#iprfilter')
+    .on('change', (e) => {
+            filtertable(e.target.value, 'ipr');
+        })
     .selectAll('option')
     .data(['Any'].concat(Object.values(iprcodes)))
     .join('option')
         .attr('value',d => d)
-        .text(d => d)
-    .on('click', (e,o) => {
-        filtertable(e,o,'ipr');
-    });
+        .text(d => d);
+
 
