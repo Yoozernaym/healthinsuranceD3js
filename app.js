@@ -108,8 +108,8 @@ const updatedemograph = (statedata) => {
         }
     })
     // set the dimensions and margins of the graph
-    const margin = {top: 30, right: 30, bottom: 70, left: 60},
-        width = (window.innerWidth*.75) - margin.left - margin.right,
+    const margin = {top: 30, right: 30, bottom: 110, left: 60},
+        width = (window.innerWidth*.85) - margin.left - margin.right,
         height = (window.innerHeight*.75) - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
@@ -136,7 +136,10 @@ const updatedemograph = (statedata) => {
         .padding([0.2])
     svg.append("g")
         .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x).tickSize(0));
+        .call(d3.axisBottom(x).tickSize(0))
+        .selectAll("text")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end")
 
     // Add Y axis
     const y = d3.scaleLinear()
@@ -222,7 +225,7 @@ const updatecountygraph = (countydata) => {
     d3.select('#graph')
         .text('')
     // set the dimensions and margins of the graph
-    const margin = {top: 50, right: 50, bottom: 100, left: 60},
+    const margin = {top: 30, right: 30, bottom: 110, left: 60},
         width = (window.innerWidth*.9) - margin.left - margin.right,
         height = (window.innerHeight*.75) - margin.top - margin.bottom;
 
@@ -318,8 +321,8 @@ const updatetimegraph = (timedata) => {
     d3.select('#graph')
         .text('')
     // set the dimensions and margins of the graph
-    const margin = {top: 10, right: 30, bottom: 30, left: 60},
-        width = (window.innerWidth*.75) - margin.left - margin.right,
+    const margin = {top: 30, right: 30, bottom: 50, left: 60},
+        width = (window.innerWidth*.85) - margin.left - margin.right,
         height = (window.innerHeight*.75) - margin.top - margin.bottom;
     // append the svg object 
     const svg = d3.select("#graph")
@@ -369,7 +372,10 @@ const updatetimegraph = (timedata) => {
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", `translate(0,${height})`)
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end");
 
     // Add Y axis
     const y = d3.scaleLinear()
