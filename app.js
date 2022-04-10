@@ -3,6 +3,7 @@ var statedata;
 var statedatafiltered;
 var countydata;
 var timedata;
+var activegraph;
 const racecodes = {'0': 'All Races', '1': 'White', '2': 'Black', '3': 'Hispanic'};
 const sexcodes = {'0': 'Both', '1': 'Male', '2': 'Female'};
 const iprcodes = {'0': 'All Incomes', '1': 'At or Below 200% of Poverty', '2': 'At or Below 250% of Poverty', '3': 'At or Below 138% of Poverty', '4': 'At or Below 400% of Poverty', '5': 'Between 138% - 400% of Poverty'};
@@ -216,6 +217,7 @@ demotab.on('click', () => {
         timetab.classed('w3-blue', true).classed('w3-indigo', false);
         countytab.classed('w3-blue', true).classed('w3-indigo', false);
         updatedemograph(statedata);
+        activegraph = 'demo';
     }
 });
 
@@ -312,6 +314,7 @@ countytab.on('click', () => {
         timetab.classed('w3-blue', true).classed('w3-indigo', false);
         demotab.classed('w3-blue', true).classed('w3-indigo', false);
         updatecountygraph(countydata);
+        activegraph = 'county';
     }
 });
 
@@ -417,6 +420,7 @@ timetab.on('click', () => {
         countytab.classed('w3-blue', true).classed('w3-indigo', false);
         demotab.classed('w3-blue', true).classed('w3-indigo', false);
         updatetimegraph(timedata);
+        activegraph = 'time';
     }
 });
 
@@ -482,4 +486,14 @@ d3.select('#iprfilter')
         .attr('value',d => d)
         .text(d => d);
 
-
+//resize graph on window resize
+window.onresize = () => {
+    console.log('resize');
+    if (activegraph === 'demo' && statedata) {
+        updatedemograph(statedata);
+    } else if (activegraph === 'county' && countydata) {
+        updatecountygraph(countydata);
+    } else if (activegraph === 'time' && timedata) {
+        updatetimegraph(timedata);
+    }
+}
